@@ -6,9 +6,8 @@ Personal portfolio website featuring a modern glassmorphic Bento grid UI, live s
 ## Features
 
 - **Bento Grid Layout:** Fully responsive, masonry-like CSS grid layout.
-- **Live Integrations:**
-  - <img src="https://skillicons.dev/icons?i=spotify" align="center" height="40" alt=" " /> **Music Status:** Real-time currently playing track via Last.fm with 30-second audio previews (Deezer/iTunes proxy).
-  - <img src="https://skillicons.dev/icons?i=arch" align="center" height="40" alt=" " /> **Gaming Status:** Real-time recently played game and hours tracked via Steam API.
+- **Live Integrations:*
+  - <img src="https://skillicons.dev/icons?i=arch" align="center" height="40" alt=" " /> **Gaming Status:** Real-time recently played game hours tracked via Steam API.
   - <img src="https://skillicons.dev/icons?i=discord" align="center" height="40" alt=" " /> **Discord Avatar:** Live avatar fetching.
 - **Interactive Dashboard:** Drag-and-drop modular settings to customize the grid layout (saved in `localStorage`).
 - **View Transitions:** Smooth native cross-fade and repositioning animations.
