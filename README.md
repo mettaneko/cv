@@ -1,12 +1,12 @@
 # mttnk.me // mettaneko.ru
 Personal portfolio website featuring a modern glassmorphic Bento grid UI, live status integrations, and a modular drag-and-drop dashboard.
 
-[🌐 View Live Website](https://mettaneko.ru)
+[View Website](https://mettaneko.ru)
 
 ## Features
 
 - **Bento Grid Layout:** Fully responsive, masonry-like CSS grid layout.
-- **Live Integrations:*
+- **Live Integrations:**
   - <img src="https://skillicons.dev/icons?i=arch" align="center" height="40" alt=" " /> **Gaming Status:** Real-time recently played game hours tracked via Steam API.
   - <img src="https://skillicons.dev/icons?i=discord" align="center" height="40" alt=" " /> **Discord Avatar:** Live avatar fetching.
 - **Interactive Dashboard:** Drag-and-drop modular settings to customize the grid layout (saved in `localStorage`).
