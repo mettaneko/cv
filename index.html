@@ -9,6 +9,7 @@
     <meta name="keywords" content="mettaneko, mttnk, меттанеко, метта, мэтта, мэттанеко, мета, мэта, метанеко, мэтанеко сервер, сервера minecraft, майнкрафт, майнкрафт, plasmo rp, рпсервера, рп, датапак, дата пак, nautilus, Rilda Rework, rilda, rilda server, project rilda, project://rilda, мяу, гав, рильда проджект, проект рильда, mettaneko, portfolio, gamedev, web development, datapacks, programmer, python, c++, c#, javascript, Minecraft, mods">
     <meta name="author" content="mettaneko">
     <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://mettaneko.ru">
     
     <meta property="og:title" content="mettaneko">
@@ -69,13 +70,8 @@
                     </div>
                     
                     
-                    <button class="control-btn-small" id="settingsBtn" aria-label="Settings" title="Настройки">
+                    <button class="control-btn-small" id="settingsBtn" aria-label="Settings" title="Settings">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
-                    </button>
-                    <button class="control-btn-small" id="themeToggleBtn" aria-label="Toggle Theme" title="Сменить тему">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
-                        </svg>
                     </button>
                 </div>
                     </div>
@@ -85,19 +81,19 @@
             <div class="bento-card socials-card" id="cardSocials">
                 <h2 class="card-label">Links</h2>
                 <nav class="social-links" aria-label="Social links">
-                    <a href="https://t.me/mettaneko" class="btn-icon" aria-label="Telegram" target="_blank">
+                    <a href="https://t.me/mettaneko" class="btn-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
                         <img src="assets/telegram.svg" alt="TG" class="svg-icon">
                     </a>
-                    <a href="https://steamcommunity.com/id/NekoSafeForWork/" class="btn-icon" aria-label="Steam" target="_blank">
+                    <a href="https://steamcommunity.com/id/NekoSafeForWork/" class="btn-icon" aria-label="Steam" target="_blank" rel="noopener noreferrer">
                         <img src="assets/steam.svg" alt="Steam" class="svg-icon">
                     </a>
-                    <a href="https://youtube.com/@mettaneko" class="btn-icon" aria-label="YouTube" target="_blank">
+                    <a href="https://youtube.com/@mettaneko" class="btn-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                         <img src="assets/yt.svg" alt="YouTube" class="svg-icon">
                     </a>
-                    <a href="https://github.com/mettaneko" class="btn-icon" aria-label="GitHub" target="_blank">
+                    <a href="https://github.com/mettaneko" class="btn-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                         <img src="assets/github.svg" alt="GitHub" class="svg-icon">
                     </a>
-                    <a href="https://last.fm/user/mettaneko" class="btn-icon" aria-label="LastFM" target="_blank">
+                    <a href="https://last.fm/user/mettaneko" class="btn-icon" aria-label="LastFM" target="_blank" rel="noopener noreferrer">
                         <img src="assets/lastfm.svg" alt="LastFM" class="svg-icon">
                     </a>
                 </nav>
@@ -128,66 +124,140 @@
                             <button class="filter-tab" data-filter="active" data-color="#ccf904">ACTIVE</button>
                             <button class="filter-tab" data-filter="in-dev" data-color="#ffaa00">IN-DEV</button>
                             <button class="filter-tab" data-filter="closed" data-color="#ff5555">CLOSED</button>
+                            <button class="filter-tab" data-filter="legacy" data-color="#c084fc">LEGACY</button>
                         </div>
                         <input type="text" id="projectSearch" class="filter-search" placeholder="Search...">
                     </div>
                 </div>
                 <div class="projects-list">
-                    <a class="project-item" data-tag="active" href="https://github.com/mettaneko/mettaneko" target="_blank">
-                        <span class="badge badge-dev">● active</span>
+                    <div class="project-item" data-tag="active" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-dev">● active</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">mettaneko.ru</h3>
                             <p class="card-desc">You're already here lol. What's wrong bro? :3c.</p>
                         </div>
-                    </a>
+                        <div class="project-actions">
+                            <a class="project-btn" href="https://github.com/mettaneko/mettaneko" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/github-white.svg" alt="" class="btn-svg">
+                                <span>Repository</span>
+                            </a>
+                            <a class="project-btn" href="https://mettaneko.ru" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/website.svg" alt="" class="btn-svg">
+                                <span>Website</span>
+                            </a>
+                        </div>
+                    </div>
                     
-                    <a class="project-item" data-tag="closed" href="https://rilda.mettaneko.ru" target="_blank">
-                        <span class="badge badge-closed">● closed</span>
+                    <div class="project-item" data-tag="closed" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-closed">● closed</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">Project://Rilda</h3>
                             <p class="card-desc">Minecraft server with Vanilla++ mechanics.</p>
                         </div>
-                    </a>
+                        <div class="project-actions">
+                            <a class="project-btn" href="https://rilda.mettaneko.ru" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/website.svg" alt="" class="btn-svg">
+                                <span>Website</span>
+                            </a>
+                        </div>
+                    </div>
                     
-                    <a class="project-item" data-tag="closed" href="https://t.me/oneshotfeedbot" target="_blank">
-                        <span class="badge badge-closed">● closed</span>
+                    <div class="project-item" data-tag="legacy" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-legacy">● legacy</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">OneShot Feed</h3>
                             <p class="card-desc">Telegram Mini-App w/ OneShot videos in TikTok references.</p>
                         </div>
-                    </a>
+                        <div class="project-actions">
+                            <a class="project-btn" href="https://t.me/oneshotfeedbot" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/website.svg" alt="" class="btn-svg">
+                                <span>Website</span>
+                            </a>
+                        </div>
+                    </div>
                     
-                    <a class="project-item" data-tag="closed" href="https://github.com/mettaneko/Cryonium" target="_blank">
-                        <span class="badge badge-closed">● closed</span>
+                    <div class="project-item" data-tag="closed" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-closed">● closed</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">Cryonium</h3>
                             <p class="card-desc">AV fork mango for Winter Zombies Mode.</p>
                         </div>
-                    </a>
+                        <div class="project-actions">
+                            <a class="project-btn" href="https://github.com/mettaneko/Cryonium" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/github-white.svg" alt="" class="btn-svg">
+                                <span>Repository</span>
+                            </a>
+                        </div>
+                    </div>
                     
-                    <a class="project-item" data-tag="closed" href="https://github.com/mettaneko/TCM-2023" target="_blank">
-                        <span class="badge badge-closed">● Сlosed</span>
+                    <div class="project-item" data-tag="legacy" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-legacy">● legacy</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">TCM 2023</h3>
                             <p class="card-desc">School project written in Python using Pygame.</p>
                         </div>
-                    </a>
+                        <div class="project-actions">
+                            <a class="project-btn" href="https://github.com/mettaneko/TCM-2023" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/github-white.svg" alt="" class="btn-svg">
+                                <span>Repository</span>
+                            </a>
+                        </div>
+                    </div>
                     
-                    <a class="project-item" data-tag="in-dev" href="#">
-                        <span class="badge badge-deprecated">● IN-DEV</span>
+                    <div class="project-item" data-tag="in-dev" tabindex="0">
+                        <div class="project-header">
+                            <div class="project-badges">
+                                <span class="badge badge-deprecated">● IN-DEV</span>
+                            </div>
+                            <span class="expand-icon" aria-hidden="true" title="Expand">
+                                <img src="assets/chevron-down.svg" alt="" class="chevron-svg">
+                            </span>
+                        </div>
                         <div class="project-details">
                             <h3 class="card-title">Fragments of Timeline</h3>
                             <p class="card-desc">No info. Powered by Godot Engine.</p>
                         </div>
-                    </a>
-                    
-                    <!--<a class="project-item" data-tag="in-dev" href="#">
-                        <span class="badge badge-deprecated">● IN-DEV</span>
-                        <div class="project-details">
-                            <h3 class="card-title">Luminium</h3>
-                            <p class="card-desc">Light-weight Sober's Single-Instance Bypass Manager.</p>
+                        <div class="project-actions">
+                            <span class="project-btn disabled">
+                                <span>In Development</span>
+                            </span>
                         </div>
-                    </a>-->
+                    </div>
                 </div>
              </div>
 
@@ -201,7 +271,7 @@
                         </div>
                     </div>
                     <div class="activity-info">
-                        <a href="#" id="lastfmLink" target="_blank" class="track-link">
+                        <a href="#" id="lastfmLink" target="_blank" rel="noopener noreferrer" class="track-link">
                             <h3 class="card-title ellipsis-text" id="lastfmTrack">Failed to load</h3>
                             <p class="card-desc ellipsis-text" id="lastfmArtist">Last.fm</p>
                         </a>
@@ -211,7 +281,7 @@
                 <audio id="trackAudio"></audio>
             </div>
 
-            <a href="https://steamcommunity.com/id/NekoSafeForWork/" class="bento-card activity-card game-card" id="cardGame" target="_blank">
+            <a href="https://steamcommunity.com/id/NekoSafeForWork/" class="bento-card activity-card game-card" id="cardGame" target="_blank" rel="noopener noreferrer">
                 <h2 class="card-label">Playing</h2>
                 <div class="activity-content">
                     <img src="assets/on_off.png" alt="Game Cover" class="activity-cover" id="steamCover">
@@ -240,7 +310,7 @@
             <div class="bento-card badges-card" id="cardBadges">
                 <h2 class="card-label">Badges</h2>
                 <div class="badges-container">
-                    <a href="https://discord.com"><img src="https://cyber.dabamos.de/88x31/discord.gif" alt="Discord" class="y2k-badge"></a>
+                    <a href="https://discord.com" target="_blank" rel="noopener noreferrer"><img src="https://cyber.dabamos.de/88x31/discord.gif" alt="Discord" class="y2k-badge"></a>
                 </div>
             </div>
 
@@ -249,7 +319,33 @@
                     <h2 class="card-label" id="settingsTitle" style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 6px;">SETTINGS <span id="settingsArrow" style="font-size: 10px; color: var(--color-text-secondary); transition: transform 0.3s;">▼</span></h2>
                     <button id="resetSettingsBtn" class="btn-icon-small" style="font-size: 10px; height: 24px; padding: 0 8px; width: auto; border-radius: 4px;" title="Reset Grid Layout">RESET</button>
                 </div>
-                <div class="settings-list hidden-module" id="settingsList" style="margin-top: 16px;">
+                <div class="settings-content hidden-module" id="settingsContent" style="margin-top: 16px;">
+                    <div class="settings-section">
+                        <span class="settings-section-title">Theme</span>
+                        <div class="theme-selector" id="themeSelector">
+                            <button class="theme-option" data-theme="default" type="button">
+                                <span class="theme-dot" style="background-color: #b44242;"></span>
+                                <span>Default</span>
+                            </button>
+                            <button class="theme-option" data-theme="raven" type="button">
+                                <span class="theme-dot" style="background-color: #a995ff;"></span>
+                                <span>Raven</span>
+                            </button>
+                            <button class="theme-option" data-theme="higuruma" type="button">
+                                <span class="theme-dot" style="background-color: #fffd95;"></span>
+                                <span>Higuruma</span>
+                            </button>
+                            <button class="theme-option" data-theme="winter-25" type="button">
+                                <span class="theme-dot" style="background-color: #95fff1;"></span>
+                                <span>Winter 25</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <span class="settings-section-title">Modules</span>
+                        <div class="settings-list" id="settingsList">
+                        </div>
+                    </div>
                 </div>
             </div>
 

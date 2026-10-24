@@ -1,10 +1,10 @@
 const CONFIG = {
     defaultTheme: "default",
     themes: [
-        { name: "default", video: "assets/default.mp4" },
-        { name: "raven", video: "assets/raven.mp4" },
-        { name: "higuruma", video: "assets/higuruma.mp4" },
-        { name: "winter", video: "assets/winter.mp4" }
+        { id: "default", name: "Default", color: "#b44242", video: "assets/default.mp4" },
+        { id: "raven", name: "Raven", color: "#a995ff", video: "assets/raven.mp4" },
+        { id: "higuruma", name: "Higuruma", color: "#fffd95", video: "assets/higuruma.mp4" },
+        { id: "winter-25", name: "Winter 25", color: "#95fff1", video: "assets/winter.mp4" }
     ],
     lastFm: {
         username: "mettaneko",
@@ -18,13 +18,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgVideo = document.getElementById('bgVideo');
     const bgVideoSource = document.getElementById('bgVideoSource');
 
-    let currentThemeIndex = CONFIG.themes.findIndex(t => t.name === (localStorage.getItem("theme") || CONFIG.defaultTheme));
+    const savedTheme = localStorage.getItem("theme");
+    const normalizedSavedTheme = savedTheme === "winter" ? "winter-25" : savedTheme;
+    let currentThemeIndex = CONFIG.themes.findIndex(t => t.id === (normalizedSavedTheme || CONFIG.defaultTheme));
     if (currentThemeIndex === -1) currentThemeIndex = 0;
+
+    function updateThemeOptionsUI(themeId) {
+        const themeOptions = document.querySelectorAll('.theme-option');
+        themeOptions.forEach(opt => {
+            if (opt.getAttribute('data-theme') === themeId) {
+                opt.classList.add('active');
+            } else {
+                opt.classList.remove('active');
+            }
+        });
+    }
+
+    function renderThemeSelector() {
+        const container = document.getElementById('themeSelector');
+        if (!container) return;
+        container.innerHTML = '';
+
+        CONFIG.themes.forEach(theme => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `theme-option ${theme.id === CONFIG.themes[currentThemeIndex].id ? 'active' : ''}`;
+            btn.setAttribute('data-theme', theme.id);
+            btn.innerHTML = `
+                <span class="theme-dot" style="background-color: ${theme.color};"></span>
+                <span>${theme.name}</span>
+            `;
+            btn.addEventListener('click', () => {
+                const idx = CONFIG.themes.findIndex(t => t.id === theme.id);
+                if (idx !== -1 && idx !== currentThemeIndex) {
+                    currentThemeIndex = idx;
+                    applyTheme(currentThemeIndex, true);
+                }
+            });
+            container.appendChild(btn);
+        });
+    }
 
     function applyTheme(index, animateVideo = false) {
         const theme = CONFIG.themes[index];
-        htmlEl.setAttribute("data-theme", theme.name);
-        localStorage.setItem("theme", theme.name);
+        htmlEl.setAttribute("data-theme", theme.id);
+        localStorage.setItem("theme", theme.id);
+        updateThemeOptionsUI(theme.id);
 
         if (animateVideo) {
             bgVideo.classList.add("fade-out");
@@ -43,12 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    renderThemeSelector();
     applyTheme(currentThemeIndex, false);
 
-    themeBtn.addEventListener('click', () => {
-        currentThemeIndex = (currentThemeIndex + 1) % CONFIG.themes.length;
-        applyTheme(currentThemeIndex, true);
-    });
+    // Support quick toggle button if present
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % CONFIG.themes.length;
+            applyTheme(currentThemeIndex, true);
+        });
+    }
 
     const introOverlay = document.getElementById('introOverlay');
     const masterVolumeSlider = document.getElementById('masterVolume');
@@ -150,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.closest('a')) return; // don't double trigger if clicking the title link
             const url = document.getElementById('lastfmLink')?.href;
             if (url && url !== '#' && !url.endsWith('#')) {
-                window.open(url, '_blank');
+                window.open(url, '_blank', 'noopener,noreferrer');
             }
         });
     }
@@ -219,28 +262,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         if (!projectsList) return;
-        const query = searchInput.value.toLowerCase();
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
         projectsList.style.opacity = '0';
 
         setTimeout(() => {
             projectItems.forEach(item => {
-                const tag = item.getAttribute('data-tag');
-                const title = item.querySelector('.card-title').textContent.toLowerCase();
-                const desc = item.querySelector('.card-desc').textContent.toLowerCase();
+                const rawTags = item.getAttribute('data-tag') || '';
+                const tags = rawTags.toLowerCase().split(/\s+/);
+                const title = item.querySelector('.card-title')?.textContent.toLowerCase() || '';
+                const desc = item.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+                const badges = Array.from(item.querySelectorAll('.badge')).map(b => b.textContent.toLowerCase()).join(' ');
 
-                const matchTag = (currentTag === 'all' || tag === currentTag);
-                const matchSearch = (title.includes(query) || desc.includes(query));
+                const matchTag = (currentTag === 'all' || tags.includes(currentTag));
+                const matchSearch = (!query || title.includes(query) || desc.includes(query) || badges.includes(query));
 
                 if (matchTag && matchSearch) {
                     item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
+                    item.classList.remove('is-expanded');
                 }
             });
             projectsList.style.opacity = '1';
-        }, 300);
+        }, 250);
     }
+
+    // Expandable Project Cards & Action Buttons
+    projectItems.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Do not toggle expansion if user clicked an action button
+            if (e.target.closest('.project-btn')) return;
+
+            // Do not toggle expansion if user is selecting/copying text
+            const selection = window.getSelection();
+            if (selection && selection.toString().trim().length > 0) return;
+
+            card.classList.toggle('is-expanded');
+        });
+
+        // Accessibility: allow Enter/Space to expand/collapse card
+        card.addEventListener('keydown', (e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+                e.preventDefault();
+                card.classList.toggle('is-expanded');
+            }
+        });
+    });
 
     if (filterTabs.length > 0 && searchInput) {
 
@@ -285,16 +353,17 @@ document.addEventListener('DOMContentLoaded', () => {
         modules = defaultModules;
     }
 
+    const settingsContent = document.getElementById('settingsContent') || document.getElementById('settingsList');
     const settingsList = document.getElementById('settingsList');
     const settingsTitle = document.getElementById('settingsTitle');
     const settingsArrow = document.getElementById('settingsArrow');
 
 
-    if (settingsTitle) {
+    if (settingsTitle && settingsContent) {
         document.getElementById('settingsTitle').addEventListener('click', () => {
             const toggleAccordion = () => {
-                settingsList.classList.toggle('hidden-module');
-                if (settingsList.classList.contains('hidden-module')) {
+                settingsContent.classList.toggle('hidden-module');
+                if (settingsContent.classList.contains('hidden-module')) {
                     settingsArrow.style.transform = 'rotate(0deg)';
                 } else {
                     settingsArrow.style.transform = 'rotate(180deg)';
@@ -342,6 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (mod) {
                 mod.visible = !mod.visible;
                 saveState();
+
+                if (mod.visible && settingsContent) {
+                    settingsContent.classList.remove('hidden-module');
+                    if (settingsArrow) settingsArrow.style.transform = 'rotate(180deg)';
+                }
 
                 if (document.startViewTransition) {
                     const transition = document.startViewTransition(() => renderDOMOrder());
@@ -436,12 +510,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item.innerHTML = `
                 <div class="setting-info" style="cursor: grab;">
-                    <span class="setting-name">:: ${mod.name}</span>
+                    <span class="setting-name"></span>
                 </div>
                 <div class="setting-controls">
                     ${toggleHTML}
                 </div>
             `;
+            const nameEl = item.querySelector('.setting-name');
+            if (nameEl) nameEl.textContent = `:: ${mod.name}`;
 
 
             item.addEventListener('dragstart', (e) => {

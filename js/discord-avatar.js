@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const data = await response.json(); 
             
-            if (data.avatarUrl) {
+            if (data.avatarUrl && typeof data.avatarUrl === 'string' && data.avatarUrl.startsWith('https://')) {
                 discordAvatar.src = data.avatarUrl;
                 console.log('Discord аватар загружен:', data.avatarUrl);
                 return;
